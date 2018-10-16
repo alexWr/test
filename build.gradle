@@ -1,0 +1,38 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: 'buildsystem/dependencies.gradle'
+buildscript {
+    
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+def versionMajor = 0
+def versionMinor = 0
+def versionPatch = 1
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+    ext {
+        androidApplicationId = 'com.faceit.openTest'
+        androidVersionCode = versionMajor * 1000 + versionMinor * 100 + versionPatch
+        androidVersionName = "${versionMajor}.${versionMinor}.${versionPatch}"
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+        testApplicationId = 'com.faceit.testopenplatform.test'
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
